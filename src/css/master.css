@@ -3,6 +3,27 @@ html, body {
   padding: 0;
 }
 
-canvas {
-  display: block;
+header {
+  background-color: rgb(62, 62, 247);
+}
+
+h1.header {
+  font-size: 32px;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+nav {
+  float: left;
+  margin-top: 0;
+  padding-right: 40px;
+  background-color: rgb(218, 240, 247);
+}
+
+h3.nav {
+  text-align: center;
+
 }
