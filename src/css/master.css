@@ -3,6 +3,53 @@ html, body {
   padding: 0;
 }
 
-canvas {
-  display: block;
+header {
+  background-color: rgb(62, 62, 247);
+}
+
+h1.header {
+  font-size: 32px;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+nav {
+  float: left;
+  padding-right: 50px;
+  background-color: rgb(218, 240, 247);
+  padding-bottom: 624px;
+}
+
+h2.nav {
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+ul.nav {
+  list-style: square;
+  margin-top: 5px;
+}
+
+li.nav {
+  padding: 5px;
+  font-size: 20px;
+}
+
+main {
+  padding: 15px;
+  margin-left: 245px;
+}
+
+footer {
+  background-color: grey;
+  padding: 15px;
+  margin-bottom: 0;
+  margin-top: 781px;
 }
