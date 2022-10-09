@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+
 html, body {
   margin: 0;
   padding: 0;
@@ -8,8 +10,9 @@ header {
 }
 
 h1.header {
-  font-size: 32px;
+  font-size: 36px;
   color: white;
+  font-family: Ubuntu, sans-serif;
   text-align: center;
   padding: 10px;
   padding-top: 20px;
@@ -40,6 +43,16 @@ ul.nav {
 li.nav {
   padding: 5px;
   font-size: 20px;
+}
+
+a.nav {
+  text-decoration: none;
+  color: black;
+}
+
+a.nav:hover {
+  color: darkgoldenrod;
+  text-decoration: underline;
 }
 
 main {
