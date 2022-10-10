@@ -22,6 +22,11 @@ h1.header {
   margin-bottom: 0;
 }
 
+h1.sec_heading {
+  text-align: center;
+  font-size: 28px;
+}
+
 nav {
   float: left;
   padding-right: 50px;
@@ -62,6 +67,20 @@ main {
 
 article {
   text-align: center;
+}
+
+div.link_create {
+  text-align: left;
+  margin-left: 120px;
+}
+
+ul {
+  list-style: square;
+}
+
+a.link_create {
+  color: black;
+  font-size: 18 px;
 }
 
 h2.article {
