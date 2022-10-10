@@ -60,9 +60,22 @@ main {
   margin-left: 245px;
 }
 
+article {
+  text-align: center;
+}
+
+h2.article {
+  text-decoration: underline;
+}
+
 footer {
   background-color: grey;
   padding: 15px;
   margin-bottom: 0;
-  margin-top: 781px;
+  margin-top: 781px; 
 }
+
+/* 
+TODO: bei footer den Wert von margin-top nach finaler Bearbeitung 
+entsprechend korrigieren
+*/
