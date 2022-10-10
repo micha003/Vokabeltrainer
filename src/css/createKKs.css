@@ -1,0 +1,15 @@
+main {
+    margin-left: 270px;
+}
+
+h3.input_kk {
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+input.input_kk {
+    width: 180px;
+    height: 50px;
+    font-size: 14px;
+    margin-bottom: 5px;
+}

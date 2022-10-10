@@ -22,6 +22,11 @@ h1.header {
   margin-bottom: 0;
 }
 
+h1.sec_heading {
+  text-align: center;
+  font-size: 28px;
+}
+
 nav {
   float: left;
   padding-right: 50px;
@@ -60,9 +65,36 @@ main {
   margin-left: 245px;
 }
 
+article {
+  text-align: center;
+}
+
+div.link_create {
+  text-align: left;
+  margin-left: 120px;
+}
+
+ul {
+  list-style: square;
+}
+
+a.link_create {
+  color: black;
+  font-size: 18 px;
+}
+
+h2.article {
+  text-decoration: underline;
+}
+
 footer {
   background-color: grey;
   padding: 15px;
   margin-bottom: 0;
-  margin-top: 781px;
+  margin-top: 781px; 
 }
+
+/* 
+TODO: bei footer den Wert von margin-top nach finaler Bearbeitung 
+entsprechend korrigieren
+*/
