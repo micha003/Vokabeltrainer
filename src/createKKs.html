@@ -10,9 +10,15 @@
   </head>
 
   <body>
-    <script src="js\main.js"></script>
-    <script src="js\createKKs.js"></script>
+    <script>
+      function get_input() {
+        var kk_v = String(window.document.getElementsByName("input.kk_vorderseite").value);
+        var kk_r = String(window.document.getElementsByName("input.kk_rückseite").value);
 
+        alert(kk_v + " " + kk_r);
+        return kk_v, kk_r;
+      }
+    </script>
     <header>
       <h1 class="header">
         Vokabeltrainer
@@ -49,19 +55,21 @@
       <h3 class="input_kk">
         Vorderseite:
       </h3>
-      <input type="textarea" name="kk_vorderseite" class="input_kk">
+      <input type="text" name="kk_vorderseite" class="input_kk" value="">
       <h3 class="input_kk">
         Rückseite:
       </h3>
-      <input type="textarea" name="kk_rückseite" class="input_kk">
+      <input type="text" name="kk_rückseite" class="input_kk" value="">
       
       <br>
 
-      <button name="create" onclick="" class="create">Erstellen</button>
+      <button name="create" onclick="get_input()" class="create">Erstellen</button>
     </main>
     <footer>
       Michael Vorogushyn - 2022 / 2023; Facharbeit zu 
       <i>Vokabeltrainer mit p5.js</i> in Informatik, Fachlehrer: Hr. Wundke
     </footer>
+
+    <script src="js\main.js"></script>
   </body>
 </html>

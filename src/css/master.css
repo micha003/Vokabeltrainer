@@ -69,6 +69,10 @@ article {
   text-align: center;
 }
 
+p.article {
+  font-size: 20px;
+}
+
 div.link_create {
   text-align: left;
   margin-left: 120px;
