@@ -80,6 +80,7 @@ div.link_link {
 
 ul {
   list-style: square;
+  text-align: justify;
 }
 
 a.link {
