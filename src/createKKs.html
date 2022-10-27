@@ -11,7 +11,11 @@
 
   <body>
     <script src="js/createKKs.js">
+      
     </script>
+
+<!-- START (above is only script)-->
+
     <header>
       <h1 class="header">
         Vokabeltrainer
@@ -45,25 +49,27 @@
       </ul>
     </nav>
     <main>
-        <h3 class="input_kk">
-          Vorderseite:
-        </h3>
-        <input type="text" name="kk_vorderseite" class="input_kk" value="" id="kk_vorderseite">
-        <h3 class="input_kk">
-          Rückseite:
-        </h3>
-        <input type="text" name="kk_rückseite" class="input_kk" value="" id="kk_rückseite">
-        
-        <br>
+      <section class="input_kk">
+        <form action="createKKs.html" class="input_kk" name="input_kk">
+          <label for="kk_v">Vorderseite</label>
+          <input type="text" name="input_kk_v" id="kk_v" class="input_kk"> 
 
-        <button name="create" onclick="JavaScript:createKK()" class="create">Erstellen</button>
-      <!--TODO: line 66: add the matching function to onclick="" -->
+          <label for="kk_r">Rückseite</label>
+          <input type="text" name="input_kk_r" id="kk_r" class="input_kk">
+
+          <button type="submit" id="create_kk" name="create_kk" onclick="getInput_kk();">Erstellen</button>
+        </form>
+      </section>
     </main>
     <footer>
       Michael Vorogushyn - 2022 / 2023; Facharbeit zu 
       <i>Vokabeltrainer mit JavaScript</i> in Informatik, Fachlehrer: Hr. Wundke
     </footer>
 
-    <script src="js\main.js"></script>
+<!-- END (now is only script)-->
+
+    <script src="js/createKKs.js">
+      
+    </script>
   </body>
 </html>

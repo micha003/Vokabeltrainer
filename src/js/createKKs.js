@@ -1,11 +1,7 @@
-function createKK() {
-    var kk_v = String(window.document.getElementById("kk_vorderseite").value);
-    var kk_r = String(window.document.getElementById("kk_rückseite").value);
+function getInput_kk() {
+    var kk_v = document.input_kk.input_kk_v.value;
+    var kk_r = document.input_kk.input_kk_r.value; 
 
-    //test
-    alert(kk_v + " " + kk_r);
+    alert(kk_v + " "+ kk_r);
     return kk_v, kk_r;
-}
-
-// test
-alert("TEST");
+  }
