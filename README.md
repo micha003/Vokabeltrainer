@@ -1,4 +1,4 @@
-# Vocabulary trainer (Vokabletrainer)
+# Vocabulary trainer (Vokabeltrainer)
 
 This is the repository for my Vocab-Trainer (VT). 
 
