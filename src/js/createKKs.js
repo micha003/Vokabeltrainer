@@ -1,10 +1,5 @@
-temp = new Array();
-create_txt = false
-
-function get_status_ckk(variable) {
-  variable = true;
-  return variable;
-}
+// recursive function
+temp = [];
 
 function getInput_kk() {
   var kk_v = document.input_kk.input_kk_v.value;
@@ -14,19 +9,17 @@ function getInput_kk() {
 
   // test
   alert(userinput);
+  return userinput;
+}
 
-  // Append the userinput to a temp. storage (Array)
+function push_to_temp(userinput) {
   temp.push(userinput);
-  // test
-  alert(temp);
-  
-  if (create_txt) {
-    var blob = new Blob([temp_array], { type: "text/plain;charset=utf-8"});
+  return temp;
+}
 
-     saveAs(blob, "lernset.txt");
-    temp = [];
-    return temp;
-  }
+function create_txt(temp) {
+  var blob = new Blob([temp], { type: "text/plain;charset=utf-8" });
+  saveAs(blob, "set.txt");
 }
 
 
