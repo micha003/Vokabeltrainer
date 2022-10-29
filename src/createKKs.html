@@ -59,8 +59,8 @@
           <label for="kk_r">Rückseite</label>
           <input type="text" name="input_kk_r" id="kk_r" class="input_kk">
 
-          <button type="submit" id="create_kk" name="create_kk" onclick="create_array(temp);">Erstellen</button>
-          <button type="submit" id="finish_c_kk" name="finish_c_kk" onclick="main(temp);">Abschließen</button>
+          <button type="submit" id="create_kk" name="create_kk" onclick="getInput_kk(temp);">Erstellen</button>
+          <button type="submit" id="finish_c_kk" name="finish_c_kk" onclick="create_and_save(temp);">Erstellen und Abschließen</button>
         </form>
       </section>
     </main>
@@ -72,7 +72,6 @@
 <!-- END (now is only script)-->
 
     <script src="js/createKKs.js">
-      main(temp);
     </script>
   </body>
 </html>

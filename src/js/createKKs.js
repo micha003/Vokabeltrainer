@@ -1,4 +1,4 @@
-function getInput_kk() {
+function getInput_kk(array = Array()) { // the only function which is working right now :(
   var kk_v = document.input_kk.input_kk_v.value;
   var kk_r = document.input_kk.input_kk_r.value;
 
@@ -6,30 +6,29 @@ function getInput_kk() {
 
   // test
   alert(userinput);
-  return userinput;
+
+  array.push(userinput);
+  // test
+  console.log(array);
+
+  return array;
 }
 
-function push_to_temp(userinput) {
-  temp.push(userinput);
-}
+function create_and_save(array = Array()) {
+  var kk_v = document.input_kk.input_kk_v.value;
+  var kk_r = document.input_kk.input_kk_r.value;
 
-function create_array() {
-  // create var for return value of first function
-  var userinput_temp = getInput_kk();
-  console.log(userinput_temp); //test
-  // pushes the userinput to the array
-  var temp = push_to_temp(userinput_temp);
-  return temp;
-}
+  var userinput = String(kk_v + ": " + kk_r + "\n");
 
-function create_txt() {
-  var blob = new Blob([temp], { type: "text/plain;charset=utf-8" });
+  // test
+  alert(userinput);
+
+  array.push(userinput);
+  // test
+  console.log(array + "finishing");
+
+  var blob = new Blob([array], { type: "text/plain;charset=utf-8" });
   saveAs(blob, "set.txt");
 
-  temp = [];
-}
-
-function main(temp) {
-  var final_temp = create_array(temp);
-  create_txt(final_temp);
+  return array = [];
 }
