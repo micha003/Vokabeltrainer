@@ -9,11 +9,11 @@ function getInput_kk() {
   return userinput;
 }
 
-function push_to_temp(userinput, temp) {
+function push_to_temp(userinput) {
   temp.push(userinput);
 }
 
-function create_array(temp) {
+function create_array() {
   // create var for return value of first function
   var userinput_temp = getInput_kk();
   console.log(userinput_temp); //test
@@ -22,7 +22,7 @@ function create_array(temp) {
   return temp;
 }
 
-function create_txt(temp) {
+function create_txt() {
   var blob = new Blob([temp], { type: "text/plain;charset=utf-8" });
   saveAs(blob, "set.txt");
 
