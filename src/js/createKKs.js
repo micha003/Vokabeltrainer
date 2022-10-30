@@ -1,9 +1,9 @@
 var temp = new Array();
 var str_temp = new String();
 
-function getInput_kk() {
-  var kk_v = document.getElementById("kk_v").value;
-  var kk_r = document.getElementById("kk_r").value;
+function getInput_kk(array = Array()) { // the only function which is working right now :(
+  var kk_v = document.input_kk.input_kk_v.value;
+  var kk_r = document.input_kk.input_kk_r.value;
 
   var userinput = String("\n" + kk_v + ": " + kk_r);
 
