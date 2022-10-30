@@ -1,4 +1,4 @@
-function getInput_kk(array = Array()) { // the only function which is working right now :(
+function getInput_kk(array = Array()) {
   var kk_v = document.input_kk.input_kk_v.value;
   var kk_r = document.input_kk.input_kk_r.value;
 
