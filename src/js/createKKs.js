@@ -1,34 +1,26 @@
-function getInput_kk(array = Array()) { // the only function which is working right now :(
-  var kk_v = document.input_kk.input_kk_v.value;
-  var kk_r = document.input_kk.input_kk_r.value;
+var temp = new Array();
+var str_temp = new String();
 
-  var userinput = String(kk_v + ": " + kk_r + "\n");
+function getInput_kk() {
+  var kk_v = document.getElementById("kk_v").value;
+  var kk_r = document.getElementById("kk_r").value;
+
+  var userinput = String("\n" + kk_v + ": " + kk_r);
 
   // test
   alert(userinput);
 
-  array.push(userinput);
+  temp.push(userinput);
   // test
-  console.log(array);
-
-  return array;
+  alert(temp);
 }
 
-function create_and_save(array = Array()) {
-  var kk_v = document.input_kk.input_kk_v.value;
-  var kk_r = document.input_kk.input_kk_r.value;
-
-  var userinput = String(kk_v + ": " + kk_r + "\n");
+function create_and_save() {
+  getInput_kk(temp);
 
   // test
-  alert(userinput);
+  console.log(temp);
 
-  array.push(userinput);
-  // test
-  console.log(array + "finishing");
-
-  var blob = new Blob([array], { type: "text/plain;charset=utf-8" });
+  var blob = new Blob([String(temp).split(",")], { type: "text/plain;charset=utf-8" });
   saveAs(blob, "set.txt");
-
-  return array = [];
 }

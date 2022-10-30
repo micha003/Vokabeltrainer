@@ -11,12 +11,7 @@
 
   <body>
     <script src="libraries/FileSaver.js-2.0.4/src/FileSaver.js"></script>
-    </script>
-    <script>
-      temp = new Array();
-    </script>
-
-<!-- START (above is only script)-->
+  <!-- START (above is only script)-->
 
     <header>
       <h1 class="header">
@@ -52,16 +47,14 @@
     </nav>
     <main>
       <section class="input_kk">
-        <form action="createKKs.html" class="input_kk" name="input_kk">
-          <label for="kk_v">Vorderseite</label>
-          <input type="text" name="input_kk_v" id="kk_v" class="input_kk"> 
+        <label for="kk_v">Vorderseite</label>
+        <input type="text" name="input_kk_v" id="kk_v" class="input_kk"> 
 
-          <label for="kk_r">Rückseite</label>
-          <input type="text" name="input_kk_r" id="kk_r" class="input_kk">
+        <label for="kk_r">Rückseite</label>
+        <input type="text" name="input_kk_r" id="kk_r" class="input_kk">
 
-          <button type="submit" id="create_kk" name="create_kk" onclick="getInput_kk(temp);">Erstellen</button>
-          <button type="submit" id="finish_c_kk" name="finish_c_kk" onclick="create_and_save(temp);">Erstellen und Abschließen</button>
-        </form>
+        <button id="create_kk" name="create_kk" onclick="getInput_kk();">Erstellen</button>
+        <button id="finish_c_kk" name="finish_c_kk" onclick="create_and_save();">Erstellen und Abschließen</button>
       </section>
     </main>
     <footer>
