@@ -73,16 +73,17 @@ p.article {
   font-size: 20px;
 }
 
-div.link_create {
+div.link_link {
   text-align: left;
   margin-left: 120px;
 }
 
 ul {
   list-style: square;
+  text-align: justify;
 }
 
-a.link_create {
+a.link {
   color: black;
   font-size: 18 px;
 }
