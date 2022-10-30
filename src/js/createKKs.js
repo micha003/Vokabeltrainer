@@ -1,31 +1,26 @@
-function getInput_kk() {
+var temp = new Array();
+var str_temp = new String();
+
+function getInput_kk(array = Array()) { // the only function which is working right now :(
   var kk_v = document.input_kk.input_kk_v.value;
   var kk_r = document.input_kk.input_kk_r.value;
 
-  // still_input is necessary for the while-loop
-  still_input = true;
+  var userinput = String("\n" + kk_v + ": " + kk_r);
 
-  while(still_input) {
-    var userinput = String(kk_v + ": " + kk_r);
+  // test
+  alert(userinput);
 
-    // Append the userinput to a temp. storage (Array)
-    temp = []
-    temp.push(userinput);
-
-    if (document.input_kk.finish_c_kk.onclick) {
-      still_input = false;
-    } else {}
-  }
-
-  //test
+  temp.push(userinput);
+  // test
   alert(temp);
 }
 
-/*
-function WriteIntxt(kk_v, kk_r) {
-  
-  var blob = new Blob([temp], { type: "text/plain;charset=utf-8"});
+function create_and_save() {
+  getInput_kk(temp);
 
-  saveAs(blob, "vocab.txt");
+  // test
+  console.log(temp);
+
+  var blob = new Blob([String(temp).split(",")], { type: "text/plain;charset=utf-8" });
+  saveAs(blob, "set.txt");
 }
-*/
