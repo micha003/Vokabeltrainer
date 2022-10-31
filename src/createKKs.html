@@ -47,17 +47,31 @@
     </nav>
     <main>
       <section class="input_kk">
-        <label for="choose_set">Lernset</label>
-        <input type="text" name="choose_set" id="choose_set" class="choose_set">
+        <div class="choose_set">
+          <label for="choose_set">Lernset:</label>
+          <input type="text" name="choose_set" id="choose_set" class="choose_set">
+        </div>
+
+        <br>
         
-        <label for="kk_v">Vorderseite</label>
+        <label for="kk_v">Vorderseite:</label>
         <input type="text" name="input_kk_v" id="kk_v" class="input_kk"> 
 
-        <label for="kk_r">Rückseite</label>
+        <br>
+
+        <label for="kk_r">Rückseite:</label>
         <input type="text" name="input_kk_r" id="kk_r" class="input_kk">
 
-        <button id="create_kk" name="create_kk" onclick="getInput_kk();">Erstellen</button>
-        <button id="finish_c_kk" name="finish_c_kk" onclick="create_and_save();">Erstellen und Abschließen</button>
+        <br>
+        
+        <div class="buttons">
+          <button id="create_kk" name="create_kk" onclick="getInput_kk();" class="create_kk">
+            Erstellen
+          </button>
+          <button id="finish_c_kk" name="finish_c_kk" onclick="create_and_save();" class="create_kk">
+            Erstellen und Abschließen
+          </button>
+        </div>
       </section>
     </main>
     <footer>
