@@ -36,5 +36,10 @@ function create_and_save() {
 function save_to_webstorage(userinput) {
   var chosen_set = document.getElementById("choose_set").value;
   
-  localStorage.setItem(chosen_set, userinput);
+  localStorage.setItem(userinput, chosen_set);
+}
+
+// only for deleting garbage from the webstorage
+function clear_storage() {
+  localStorage.clear();
 }
