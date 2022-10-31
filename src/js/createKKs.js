@@ -11,21 +11,13 @@ function getInput_kk() {
 
   //saves the KK to the localstorage
   save_to_webstorage(userinput);
-
-  // test
-  alert(userinput);
   // adds the userinput (temp KK) to the array
   temp.push(userinput);
-  // test
-  alert(temp);
 }
 
 function create_and_save() {
   // executes the function above
   getInput_kk(temp);
-
-  // test
-  console.log(temp);
 
   // takes the value of an input field and set it as the file name
   var chosen_set = document.getElementById("choose_set").value;
