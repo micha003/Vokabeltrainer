@@ -1,11 +1,12 @@
 var temp = new Array();
-var str_temp = new String();
 
 function getInput_kk() { // the only function which is working right now :(
   var kk_v = document.getElementById("kk_v").value;
   var kk_r = document.getElementById("kk_r").value;
 
   var userinput = String("\n" + kk_v + ": " + kk_r);
+
+  save_to_webstorage(userinput);
 
   // test
   alert(userinput);
@@ -27,4 +28,13 @@ function create_and_save() {
   saveAs(blob, chosen_set + ".txt");
 
   temp = [];
+}
+
+// The including of the webstorage
+// HERE IT BEGINS!
+
+function save_to_webstorage(userinput) {
+  var chosen_set = document.getElementById("choose_set").value;
+  
+  localStorage.setItem(chosen_set, userinput);
 }
