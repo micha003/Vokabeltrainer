@@ -2,14 +2,36 @@ main {
     margin-left: 270px;
 }
 
-h3.input_kk {
-    margin-bottom: 5px;
-    margin-top: 10px;
+section.input_kk {
+    border: 2.5px solid black;
+    padding: 10px;
+}
+
+label {
+    margin-right: 2px;
+}
+
+input.choose_set, input.input_kk {
+    margin: 3.5px;
+    padding: 2.5px;
+}
+
+div.choose_set {
+    margin-bottom: 0.5px;
+    padding: 10px;
+    border-bottom: 1px solid black;
 }
 
 input.input_kk {
     width: 180px;
-    height: 50px;
-    font-size: 14px;
-    margin-bottom: 5px;
+    height: 25px;
+}
+
+div.buttons {
+    margin-top: 10px;
+}
+
+button.create_kk {
+    color: aliceblue;
+    background-color: rgb(62, 62, 247);
 }
