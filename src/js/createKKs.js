@@ -16,7 +16,7 @@ function getInput_kk() {
         none_inp = false;
       } else {
         continue;
-      }
+      }    
     } while (none_inp);
   }
 
