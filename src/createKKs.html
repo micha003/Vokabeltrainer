@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html lang="de">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
 
     <title>Vokabeltrainer</title>
 
-    <link rel="stylesheet" type="text/css" href="css\master.css">
-    <link rel="stylesheet" type="text/css" href="css\createKKs.css">
+    <link rel="stylesheet" type="text/css" href="css\master.css" />
+    <link rel="stylesheet" type="text/css" href="css\createKKs.css" />
   </head>
 
   <body>
-    <script src="libraries/FileSaver.js-2.0.4/src/FileSaver.js"></script>
-  <!-- START (above is only script)-->
-
     <header>
-      <h1 class="header">
-        Vokabeltrainer
-      </h1>
+      <h1 class="header">Vokabeltrainer</h1>
     </header>
     <nav>
-      <h2 class="nav">
-        Navigation
-      </h2>
+      <h2 class="nav">Navigation</h2>
       <ul class="nav">
         <li class="nav">
-          <a href="index.html" class="nav">
-            Startseite
-          </a>
+          <a href="index.html" class="nav"> Startseite </a>
         </li>
         <li class="nav">
           <a href="kartenverwaltung.html" class="nav">
@@ -34,14 +25,10 @@
           </a>
         </li>
         <li class="nav">
-          <a href="kartenabfrage.html" class="nav">
-            Üben
-          </a>
+          <a href="kartenabfrage.html" class="nav"> Üben </a>
         </li>
         <li class="nav">
-          <a href="stats.html" class="nav">
-            Statistiken         
-          </a>
+          <a href="stats.html" class="nav"> Statistiken </a>
         </li>
       </ul>
     </nav>
@@ -49,46 +36,41 @@
       <section class="input_kk">
         <div class="choose_set">
           <label for="choose_set">Lernset:</label>
-          <input type="text" name="choose_set" id="choose_set" class="choose_set">
+          <input type="text" name="choose_set" id="choose_set" class="choose_set" />
         </div>
 
-        <br>
-        
-        <label for="kk_v">Vorderseite:</label>
-        <input type="text" name="input_kk_v" id="kk_v" class="input_kk"> 
+        <br />
 
-        <br>
+        <label for="kk_v">Vorderseite:</label>
+        <input type="text" name="input_kk_v" id="kk_v" class="input_kk" />
+
+        <br />
 
         <label for="kk_r">Rückseite:</label>
-        <input type="text" name="input_kk_r" id="kk_r" class="input_kk">
+        <input type="text" name="input_kk_r" id="kk_r" class="input_kk" />
 
-        <br>
-        
+        <br />
+
         <div class="buttons">
-          <button id="create_kk" name="create_kk" onclick="getInput_kk();" class="create_kk">
-            Erstellen
-          </button>
-          <button id="finish_c_kk" name="finish_c_kk" onclick="create_and_save();" class="create_kk">
+          <button id="create_kk" name="create_kk" onclick="pushKK();" class="create_kk">Erstellen</button>
+          <button id="finish_c_kk" name="finish_c_kk" onclick="exportSet();" class="create_kk">
             Erstellen und Abschließen
           </button>
           <!-- 
             for removing data from testing
             write disable into the button tag, if it becomes useless
           -->
-          <button onclick="clear_storage();" class="create_kk">
-            Storage reiningen
-          </button>
+          <button onclick="clearStorage();" class="create_kk">Storage reiningen</button>
         </div>
       </section>
     </main>
     <footer>
-      Michael Vorogushyn - 2022 / 2023; Facharbeit zu 
+      Michael Vorogushyn - 2022 / 2023; Facharbeit zu
       <i>Vokabeltrainer mit JavaScript</i> in Informatik, Fachlehrer: Hr. Wundke
     </footer>
 
-<!-- END (now is only script)-->
+    <!-- END (now is only script)-->
 
-    <script src="js/createKKs.js">
-    </script>
+    <script src="js/createKKs.js"></script>
   </body>
 </html>
