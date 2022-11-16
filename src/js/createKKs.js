@@ -1,55 +1,119 @@
-// the array for saving the KK's until they will putted to a .txt-file
-var temp = new Array();
+'use strict';
 
-function getInput_kk() {
-  // saves the values of the entry fields for the KK'S
-  var kk_v = document.getElementById("kk_v").value;
-  var kk_r = document.getElementById("kk_r").value;
+const EXPORT_FILE_TYPE = 'text/plain;charset=utf-8';
 
-  //produce a String to put the single var together
-  var userinput = String("\n" + kk_v + ": " + kk_r);
+/**
+ * Start downloading of your text file
+ * @param {string} filename - File's name
+ * @param {string} text - Content
+ */
+const download = (filename, text) => {
+  // Create link DOM element
+  const element = document.createElement('a');
+  // Set content to download as url encoded string
+  element.setAttribute('href', `data:${EXPORT_FILE_TYPE},${encodeURIComponent(text)}`);
+  // Mark the file to be downloaded, not opened, when you click on it
+  element.setAttribute('download', filename);
+  // Add style to not be shown, append to the DOM
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  // Force click on it an delete the element
+  element.click();
+  document.body.removeChild(element);
+};
 
-  //saves the KK to the localstorage
-  save_to_webstorage(userinput);
+/**
+ * Get value of an input with addition validation
+ * @param {string} inputId - ID of the input
+ * @param {boolean} [ignoreCheck=false] - Whether to ignore the validation of input's value
+ * @returns {(string|null)} - String on success, null if it did not pass the validation
+ */
+const getStringInput = (inputId, ignoreCheck = false) => {
+  const { value } = document.getElementById(inputId);
+  const isValid = typeof value === 'string' && value.length > 0;
+  return isValid || ignoreCheck ? value : null;
+};
 
-  // test
-  alert(userinput);
-  // adds the userinput (temp KK) to the array
-  temp.push(userinput);
-  // test
-  alert(temp);
+const setInputValue = (inputId, value) => {
+  const input = document.getElementById(inputId);
+  input.value = value;
+  return true;
+};
+
+const createLernset = (name) => {
+  const shouldCreate = confirm('Es gibt noch kein solches Lernset. Wollen Sie es erstellen?');
+  if (!shouldCreate) return false;
+  localStorage.setItem(name, '[]');
+  return true;
+};
+
+function getChosenSetName() {
+  const inputId = 'choose_set';
+  const chosenSetName = getStringInput(inputId);
+  if (!chosenSetName) {
+    const newName = prompt('Bitte geben Sie einen Namen für das Lernset ein:');
+    setInputValue(inputId, newName);
+    return getChosenSetName();
+  }
+  return chosenSetName;
 }
 
-function create_and_save() {
-  // executes the function above
-  getInput_kk(temp);
+function pushKK() {
+  getChosenSetName();
+  try {
+    const inputsList = ['kk_v', 'kk_r'];
+    const userInput = inputsList.map((inputId) => getStringInput(inputId));
+    const isAllValid = userInput.every((val) => !!val);
+    if (!isAllValid) throw new Error('Die Eingabe ist nicht vollständig');
+    saveToStorage(userInput);
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+}
 
-  // test
-  console.log(temp);
+const getFromStorage = (id) => {
+  try {
+    const rawItem = localStorage.getItem(id);
+    return JSON.parse(rawItem);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
-  // takes the value of an input field and set it as the file name
-  var chosen_set = document.getElementById("choose_set").value;
+const prepareForExport = (body) => body.map((card) => card.join(': ')).join('\n');
 
-  // Saves the .txt-file
-  var blob = new Blob([temp], { type: "text/plain;charset=utf-8" });
-  saveAs(blob, chosen_set + ".txt");
-
-  //cleares the temp array to reuse it
-  temp = [];
+function exportSet() {
+  try {
+    // takes the value of an input field and set it as the file name
+    const name = getChosenSetName();
+    const body = getFromStorage(name);
+    if (body.length === 0) throw new Error('Sie müssen zuerst mindestens ein Wort hinzufügen');
+    // Saves the .txt-file
+    const normalizedName = name.toLowerCase().replaceAll(' ', '-');
+    download(`${normalizedName}.txt`, prepareForExport(body));
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
 }
 
 // The including of the webstorage
 // HERE IT BEGINS!
 
-function save_to_webstorage(userinput) {
-  // creates a var to save the title of the set
-  var chosen_set = document.getElementById("choose_set").value;
-  
-  // saves the userinput in the localstorage with the set-title as the value
-  localStorage.setItem(userinput, chosen_set);
+function saveToStorage(userInput) {
+  const name = getChosenSetName();
+  let setBody = getFromStorage(name);
+  if (!setBody) {
+    const isCreated = createLernset(name);
+    if (!isCreated) return null;
+    setBody = [];
+  }
+  setBody.push(userInput);
+  localStorage.setItem(name, JSON.stringify(setBody));
 }
 
 // only for deleting garbage from the webstorage
-function clear_storage() {
+function clearStorage() {
   localStorage.clear();
 }

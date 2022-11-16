@@ -6,10 +6,12 @@
     <title>Vokabeltrainer</title>
 
     <link rel="stylesheet" type="text/css" href="css\master.css">
+    <link rel="stylesheet" type="text/css" href="css/KVW.css">
   </head>
 
   <body>
     <script src="js\main.js"></script>
+    <script src="js/import_txt.js"></script>
 
     <header>
       <h1 class="header">
@@ -62,6 +64,17 @@
             </li>
         </ul>
         </div>
+      </article>
+      <article>
+        <label for="import_txt" class="import_txt">
+          Importieren von Lernsets (.txt)
+        </label>
+        <br>
+        <input type="file" class="import_txt" id="import_txt" accept=".txt">
+        <!-- TODO: insert onclick function, when it's ready -->
+        <button class="button_import_txt"  id="button_import_txt" onclick="">
+          Importieren
+        </button>
       </article>
     </main>
     <footer>
