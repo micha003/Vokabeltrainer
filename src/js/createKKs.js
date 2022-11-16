@@ -5,11 +5,14 @@ function getInput_kk() {
   // saves the value for the set name
   var chosen_set = document.getElementById("choose_set");
 
-  if (chosen_set !== undefined && chosen_set !== null && chosen_set !== "") {
+  if (chosen_set == undefined || chosen_set == null || chosen_set == "") {
+	var false_inp = true;
 
-  } else {
-    var none_inp = true;
+	do {
+		// TODO: replace 'ue'
+		var chosen_set = prompt("Bitte geben Sie einen gueltigen Namen fuer das Set ein");
 
+<<<<<<< HEAD
     do {
       chosen_set = prompt("Bitte geben Sie einen Namen für das Lernset ein:");
       if (chosen_set !== undefined && chosen_set !== null && chosen_set !== "") {
@@ -19,6 +22,14 @@ function getInput_kk() {
       }    
     } while (none_inp);
   }
+=======
+		if (chosen_set !== undefined && chosen_set !== null && chosen_set !== "") {
+			false_inp = false;
+		} else {
+			continue;
+		}
+  } while (false_inp);
+>>>>>>> 02c1efc471ba2b4ce849280e88bbc55d379cc84a
 
   // saves the values of the entry fields for the KK'S
   var kk_v = document.getElementById("kk_v").value;
