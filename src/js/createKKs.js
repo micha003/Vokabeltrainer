@@ -1,24 +1,26 @@
-// the array for saving the KK's until they will putted to a .txt-file
-var temp = new Array();
+'use strict';
 
-function getInput_kk() {
-  // saves the value for the set name
-  var chosen_set = document.getElementById("choose_set");
+const EXPORT_FILE_TYPE = 'text/plain;charset=utf-8';
 
-  if (chosen_set !== undefined && chosen_set !== null && chosen_set !== "") {
-
-  } else {
-    var none_inp = true;
-
-    do {
-      chosen_set = prompt("Bitte geben Sie einen Namen für das Lernset ein:");
-      if (chosen_set !== undefined && chosen_set !== null && chosen_set !== "") {
-        none_inp = false;
-      } else {
-        continue;
-      }
-    } while (none_inp);
-  }
+/**
+ * Start downloading of your text file
+ * @param {string} filename - File's name
+ * @param {string} text - Content
+ */
+const download = (filename, text) => {
+  // Create link DOM element
+  const element = document.createElement('a');
+  // Set content to download as url encoded string
+  element.setAttribute('href', `data:${EXPORT_FILE_TYPE},${encodeURIComponent(text)}`);
+  // Mark the file to be downloaded, not opened, when you click on it
+  element.setAttribute('download', filename);
+  // Add style to not be shown, append to the DOM
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  // Force click on it an delete the element
+  element.click();
+  document.body.removeChild(element);
+};
 
   // saves the values of the entry fields for the KK'S
   var kk_v = document.getElementById("kk_v").value;
