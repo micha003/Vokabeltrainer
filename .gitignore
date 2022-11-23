@@ -1,3 +1,9 @@
 jsconfig.json 
 
 drawio
+
+.prettierrc
+package.json
+package-lock.json
+
+node_modules
