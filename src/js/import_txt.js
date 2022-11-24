@@ -7,4 +7,6 @@ file.addEventListener('change', function () {
   };
   const full_file = reader.readAsText(this.files[0]);
   console.log(full_file);
+  let splitup = full_file.split("\n");
+  console.log(splitup);
 });
