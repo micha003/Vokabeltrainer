@@ -43,7 +43,7 @@ const setInputValue = (inputId, value) => {
 const createLernset = (name) => {
   const shouldCreate = confirm('Es gibt noch kein solches Lernset. Wollen Sie es erstellen?');
   if (!shouldCreate) return false;
-  localStorage.setItem(name, '[]');
+  localStorage.setItem(name, '');
   return true;
 };
 
@@ -98,18 +98,15 @@ function exportSet() {
   }
 }
 
-// The including of the webstorage
-// HERE IT BEGINS!
-
 function saveToStorage(userInput) {
   const name = getChosenSetName();
   let setBody = getFromStorage(name);
   if (!setBody) {
     const isCreated = createLernset(name);
     if (!isCreated) return null;
-    setBody = [];
+    setBody = '';
   }
-  setBody.push(userInput);
+  setBody.join(userInput + ', ');
   localStorage.setItem(name, JSON.stringify(setBody));
 }
 
