@@ -43,11 +43,11 @@ const setInputValue = (inputId, value) => {
 const createLernset = (name) => {
   const shouldCreate = confirm('Es gibt noch kein solches Lernset. Wollen Sie es erstellen?');
   if (!shouldCreate) return false;
-  localStorage.setItem(name, '');
+  localStorage.setItem(name, '[]');
   return true;
 };
 
-function getChosenSetName() {
+const getChosenSetName = () => {
   const inputId = 'choose_set';
   const chosenSetName = getStringInput(inputId);
   if (!chosenSetName) {
@@ -58,7 +58,7 @@ function getChosenSetName() {
   return chosenSetName;
 }
 
-function pushKK() {
+const pushKK = () => {
   getChosenSetName();
   try {
     const inputsList = ['kk_v', 'kk_r'];
@@ -83,7 +83,7 @@ const getFromStorage = (id) => {
 
 const prepareForExport = (body) => body.map((card) => card.join(': ')).join('\n');
 
-function exportSet() {
+const exportSet = () => {
   try {
     // takes the value of an input field and set it as the file name
     const name = getChosenSetName();
@@ -98,19 +98,16 @@ function exportSet() {
   }
 }
 
-function saveToStorage(userInput) {
+const clearStorage = () => localStorage.clear();
+
+const saveToStorage = (userInput) => {
   const name = getChosenSetName();
   let setBody = getFromStorage(name);
   if (!setBody) {
     const isCreated = createLernset(name);
     if (!isCreated) return null;
-    setBody = '';
+    setBody = [];
   }
-  setBody.join(userInput + ', ');
+  setBody.push(userInput);
   localStorage.setItem(name, JSON.stringify(setBody));
-}
-
-// only for deleting garbage from the webstorage
-function clearStorage() {
-  localStorage.clear();
 }

@@ -1,27 +1,56 @@
-const file = document.getElementById('import_txt');
-let file_name = file.files[0].name.replace('.txt', '');
+const LINE_BREAKER = '\n';
+const LINE_SPLITTER = ": ";
 
-console.log(file_name);
 
-file.addEventListener('change', function () {
-  const reader = new FileReader();
-  reader.onload = function (progressEvent) {
-    console.log(this.result);
+const onFileLoad = (progressEvent) => {
+  const input = this.result;
+  if (typeof input !== 'string') throw new Error("Kein string");
 
-    let input = this.result;
-    // check the type of the result
-    const checkType = typeof this.result;
-    console.log(checkType);
-    // try to split it up, what worked :)
-    let imported_kk = input.split('\n');
-    console.log(imported_kk);
+  // Try to split it up, what worked :)
+  const importedKKs = input.split('\n').map(line => line.split(LINE_SPLITTER))
 
-    if (file_name in localStorage) {
-      for (let index = 0; index < imported_kk.length; index++) {
-        let saved_element = localStorage.getItem(file_name);
-        const element = `[${imported_kk[index]}]`;
-      }
+  if (file_name in localStorage) {
+    for (let index = 0; index < imported_kk.length; index++) {
+      let saved_element = localStorage.getItem(file_name);
+      const element = `[${imported_kk[index]}]`;
     }
-  };
-  let full_file = reader.readAsText(this.files[0]);
-});
+  }
+};
+
+const readFileAsync = (file) => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.onload = () => resolve(reader.result);
+  reader.onerror = reject;
+  reader.readAsText(file);
+})
+
+const parseFile = (content) => content.split(LINE_BREAKER).map(line => line.split(LINE_SPLITTER))
+
+const importParsedKKs = (categoryName, cards = []) => {
+  try {
+    const categoryExists = localStorage.getItem(categoryName);
+    if (!categoryExists) {
+      localStorage.setItem(category, JSON.stringify(cards));
+      return;
+    }
+    const oldSet = JSON.parse(categoryExists)
+    
+
+  } catch (err) {
+    console.error(err)
+    // TODO: Add handling if an error on JSON parse happends
+  }
+
+}
+
+const processFile = async () => {
+  const file = importInput.files[0]
+  if (!file) throw new Error('Kein Datei')
+  const fileContent = await readFileAsync(file)
+  const fileName = file.name.replace('.txt', '');
+  const parsed = parseFile(fileContent)
+  importParsedKKs(fileName, parsed)
+}
+
+const importInput = document.getElementById('import_txt');
+importInput.addEventListener('change', processFile);
