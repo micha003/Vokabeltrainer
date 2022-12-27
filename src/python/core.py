@@ -1,0 +1,2 @@
+def horizontalLine():
+    print("----------------------")
