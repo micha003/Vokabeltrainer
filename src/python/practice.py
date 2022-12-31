@@ -54,17 +54,14 @@ def Querry(allSets):
     kkV: str()
     kkR: str()
     givenAnswer: str()
-# TODO: add h-lines to seperate every KK
+
     for a in indexes:
         kkV = chosenSet[a].split(":")[0]
         kkR = chosenSet[a].split(":")[1]
 
-        # test
-        print(kkR)
-
         givenAnswer = input(f"{kkV}: ")
 
-        if givenAnswer == kkR:  # FIXME: it is always saying that the given Answer is FALSE !!!
+        if givenAnswer == kkR:
             print("Richtig!")
             c.horizontalLine()
             rightAnswers += 1

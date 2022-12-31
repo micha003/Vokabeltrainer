@@ -41,9 +41,6 @@ def main(AIS):
             iK.importSet(AIS)
         elif command == "-pra":
             pra.Querry(AIS)
-        elif command == "-edit":
-            pass
-        # TODO: add the command for editing a Set
         elif command == "-xxx":
             exit()
         else:

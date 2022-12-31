@@ -34,15 +34,14 @@ def getKK():
 
 
 def getSet():
-    inputMode = True
-
-    while inputMode:
+    while True:
         KK = getKK()
         temp.append(KK)
 
         try:
             finishInput = int(
                 input("1: weitere KKs | 2: weiter zu Export  \n"))
+            c.horizontalLine()
 
             if finishInput == 1 or finishInput == 2:
                 pass
@@ -73,6 +72,7 @@ def getSet():
 
 def export():
     setname = input("Name des Sets: ")
+    c.horizontalLine()
     lernset = getSet()
 
     newset = open(f"{setname}.txt", "w")
