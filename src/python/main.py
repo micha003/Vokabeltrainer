@@ -2,6 +2,9 @@
 import core as c
 import createKK as cK
 import importKK as iK
+import practice as pra
+
+allImportedSets = {}
 
 
 def printStartpage():
@@ -17,11 +20,34 @@ def printHelp():
     -help: zeigt alle Befehle an \n
     -create: erstellt ein neues Lernset \n
     -import: importiert ein Lernset \n
-    -edit: editiert Lernset \n
+    -edit: editiert ein Lernset \n
     -pra: Lernset üben \n
-    -
+    -xxx: Beendet das Programm
     """)
+    c.horizontalLine()
 
 
-if __name__ == "__main__":
+def main(AIS):
     printStartpage()
+
+    while True:
+        command = input(">>> ")
+
+        if command == "-help":
+            printHelp()
+        elif command == "-create":
+            cK.export()
+        elif command == "-import":
+            iK.importSet(AIS)
+        elif command == "-pra":
+            pra.Querry(AIS)
+        elif command == "-edit":
+            pass
+        # TODO: add the command for editing a Set
+        elif command == "-xxx":
+            exit()
+        else:
+            continue
+
+
+main(allImportedSets)

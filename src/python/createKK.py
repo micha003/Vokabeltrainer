@@ -30,7 +30,7 @@ def getKK():
             else:
                 emptyValue = False
 
-    return f"{kk_v}: {kk_r} \n"
+    return f"{kk_v}:{kk_r} \n"
 
 
 def getSet():
