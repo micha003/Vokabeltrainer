@@ -1,3 +1,13 @@
-jsconfig.json 
-
 drawio
+
+.prettierrc
+package.json
+package-lock.json
+
+node_modules
+
+__pycache__
+test.py
+.idea
+
+editKK.py

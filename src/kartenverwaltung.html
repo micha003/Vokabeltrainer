@@ -11,7 +11,6 @@
 
   <body>
     <script src="js\main.js"></script>
-    <script src="js/import_txt.js"></script>
 
     <header>
       <h1 class="header">
@@ -70,16 +69,13 @@
           Importieren von Lernsets (.txt)
         </label>
         <br>
-        <input type="file" class="import_txt" id="import_txt" accept=".txt">
-        <!-- TODO: insert onclick function, when it's ready -->
-        <button class="button_import_txt"  id="button_import_txt" onclick="">
-          Importieren
-        </button>
+        <input type="file" class="import_txt" id="import_txt" accept=".txt"> <!-- accept-attribute does not work on mobile devices :( -->
       </article>
     </main>
     <footer>
       Michael Vorogushyn - 2022 / 2023; Facharbeit zu 
       <i>Vokabeltrainer mit JavaScript</i> in Informatik, Fachlehrer: Hr. Wundke
     </footer>
+    <script src="js/import_txt.js"></script>
   </body>
 </html>
