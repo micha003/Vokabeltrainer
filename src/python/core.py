@@ -1,5 +1,8 @@
+import os
+
+
 def horizontalLine():
     print("----------------------")
 
 
-workspace = r"src\python"
+workspace = os.getcwd()
