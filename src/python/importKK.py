@@ -2,8 +2,6 @@
 import core as c
 import os
 
-# FIXME: the .exe-file / version is dieing, when you try to execute this script :(
-
 
 def importSet(importedSets):
     os.chdir(c.workspace)

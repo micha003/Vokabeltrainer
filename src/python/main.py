@@ -1,9 +1,12 @@
 # Vokabeltrainer
+
+# importiert alle Module
 import core as c
 import createKK as cK
 import importKK as iK
 import practice as pra
 
+# Erstellt ein Dictionary, wo alle importieten Sets gespeichert werden
 allImportedSets = {}
 
 
@@ -26,13 +29,15 @@ def printHelp():
     """)
     c.horizontalLine()
 
+# Erstellt die Funktion main mit dem Parameter AIS (All Imported Sets)
+
 
 def main(AIS):
     printStartpage()
 
     while True:
         command = input(">>> ")
-
+# Es gibt in Python kein switch-case, deswegen wurden if-statements verwendet
         if command == "-help":
             printHelp()
         elif command == "-create":
@@ -42,9 +47,11 @@ def main(AIS):
         elif command == "-pra":
             pra.Querry(AIS)
         elif command == "-xxx":
+            # Beendet das Programm
             exit()
         else:
             continue
 
 
+# Führt die main-Funktion aus
 main(allImportedSets)

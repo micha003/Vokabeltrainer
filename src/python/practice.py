@@ -56,10 +56,10 @@ def Querry(allSets):
     givenAnswer: str()
 
     for a in indexes:
-        kkV = chosenSet[a].split(":")[0]
-        kkR = chosenSet[a].split(":")[1]
+        kkV = chosenSet[a].split(":")[0].strip()
+        kkR = chosenSet[a].split(":")[1].strip()
 
-        givenAnswer = input(f"{kkV}: ")
+        givenAnswer = input(f"{kkV}: ").strip()
 
         if givenAnswer == kkR:
             print("Richtig!")
