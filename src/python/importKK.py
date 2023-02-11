@@ -4,7 +4,7 @@ import os
 
 
 def importSet(importedSets):
-    os.chdir(c.workspace)
+    os.chdir(os.getcwd())
 
     while True:
         print("Stellen Sie sicher, dass das Lernset in diesem Verzeichnis abgelegt ist!")
@@ -19,6 +19,7 @@ def importSet(importedSets):
         break
 
     importedKK = importedSet.read().split("\n")
+    importedSet.close()
     # Löscht den letzten Eintrag der Liste
     del importedKK[-1]
 

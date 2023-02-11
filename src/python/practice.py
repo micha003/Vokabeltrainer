@@ -2,6 +2,7 @@
 import core as c
 import importKK as iK
 import random as r
+import time as t
 
 
 def getQueriedSet(allSets):
@@ -24,6 +25,8 @@ def getQueriedSet(allSets):
                 return
             else:
                 continue
+    elif chosenSetName == "import()":
+        return
     else:
         pass
 
@@ -38,13 +41,13 @@ def Querry(allSets):
     else:
         pass
 
-    indexes = []
+    indezes = []
     d = len(chosenSet)
     # d steht für duration (Dauer) der for-Schleife nach diesem Comment
     for i in range(d):
-        indexes.append(i)
+        indezes.append(i)
 
-    r.shuffle(indexes)
+    r.shuffle(indezes)
 
     rightAnswers = 0
     dkAnswers = 0  # Der abgefragte wusste die Antwort gar nicht
@@ -55,7 +58,7 @@ def Querry(allSets):
     kkR: str()
     givenAnswer: str()
 
-    for a in indexes:
+    for a in indezes:
         kkV = chosenSet[a].split(":")[0].strip()
         kkR = chosenSet[a].split(":")[1].strip()
 
@@ -78,6 +81,11 @@ def Querry(allSets):
                 - {dkAnswers} wussten Sie nicht \n
                 - {falseAnswers} falsch
             """)
+
+    statsFile = open(f"{chosenSet}_stats.csv", "a")
+    statsFile.write(
+        f"{str(t.strftime('%d.%m.%Y %H:%M'))}, {totalAns}, {rightAnswers}, {dkAnswers}, {falseAnswers}")
+    statsFile.close()
     c.horizontalLine()
 
 

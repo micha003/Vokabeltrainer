@@ -37,6 +37,10 @@ def getSet():
     while True:
         KK = getKK()
         temp.append(KK)
+        # reversed KK
+        kk_v = KK.split(":")[1]
+        kk_r = KK.split(":")[0]
+        temp.append(f"{kk_v}:{kk_r} \n")
 
         try:
             finishInput = int(
@@ -72,15 +76,22 @@ def getSet():
 
 def export():
     setname = input("Name des Sets: ")
+    print("Bitte beachten Sie, dass die dazugehörige .csv-Datei stets im gleichen Verzeichnis abgelegt ist!")
     c.horizontalLine()
     lernset = getSet()
 
     newset = open(f"{setname}.txt", "w")
 
     for i in range(len(lernset)):
-        newset.write(lernset[i])
+        newset.write(str(lernset[i]))
 
     newset.close()
+
+    # Erstellt eine Datei für die Statistiken
+    setStats = open(f"{setname}_stats.csv", "w")
+    setStats.write(
+        "Datum & Uhrzeit, Anzahl gesamt, Anzahl Richtig, Anzahl nicht gewusst, Anzahl Falsch \n")
+    setStats.close()
 
 
 if __name__ == "__main__":
