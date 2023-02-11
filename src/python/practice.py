@@ -31,11 +31,14 @@ def getQueriedSet(allSets):
         pass
 
     chosenSet = allSets[chosenSetName]
-    return chosenSet
+    return chosenSet, chosenSetName
 
 
 def Querry(allSets):
-    chosenSet = getQueriedSet(allSets)
+    value = getQueriedSet(allSets)[0]
+    chosenSet = value[0]
+    chosenSetName = value[1]
+
     if chosenSet == None:
         return
     else:
@@ -82,9 +85,9 @@ def Querry(allSets):
                 - {falseAnswers} falsch
             """)
 
-    statsFile = open(f"{chosenSet}_stats.csv", "a")
+    statsFile = open(f"{chosenSetName}_stats.csv", "a")
     statsFile.write(
-        f"{str(t.strftime('%d.%m.%Y %H:%M'))}, {totalAns}, {rightAnswers}, {dkAnswers}, {falseAnswers}")
+        f"{str(t.strftime('%d.%m.%Y %H:%M'))}, {totalAns}, {rightAnswers}, {dkAnswers}, {falseAnswers}\n")
     statsFile.close()
     c.horizontalLine()
 
