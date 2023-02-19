@@ -9,6 +9,6 @@ node_modules
 __pycache__
 test.py
 .idea
-
-editKK.py
 .vscode
+editKK.py
+output

@@ -77,8 +77,17 @@ def getSet() -> list:
 # Definiert eine Funktion export(), die keine Parameter hat
 def export():
     # Erstellt eine Variable setname, die als zugewiesenen Wert eine Benutzereingabe (String) bekommt
-    setname = input("Name des Sets: ")
-    c.horizontalLine()
+    while True:
+        c.horizontalLine()
+        setname = input("Name des Sets: ")
+        c.horizontalLine()
+
+        if setname.strip() == "":
+            print("Leere Eingabe nicht zulässig!")
+            continue
+        else:
+            break
+        
     # Erstellt eine Variable lernset, die als zugewiesenen Wert die Liste aus der Funktion getSet() bekommt
     lernset = getSet()
     # Erstellt eine Datei mit dem Namen der Variable setname und dem String ".txt" und fügt die Liste lernset in die Datei ein
