@@ -44,7 +44,7 @@ def getSet() -> list:
         KK = getKK()
         temp.append(KK)
         # Erstellt eine Variable kk_v, die als zugewiesenen Wert den ersten Teil der Variable KK (Vorderseite) bekommt
-        kk_v = KK.split(":")[1]
+        kk_v = KK.split(":")[1].split(" ")[0]
         kk_r = KK.split(":")[0]
         # Fügt der Liste temp einen neuen Eintrag hinzu, der aus der Funktion getKK() besteht
         temp.append(f"{kk_v}:{kk_r} \n")
@@ -87,7 +87,7 @@ def export():
             continue
         else:
             break
-        
+
     # Erstellt eine Variable lernset, die als zugewiesenen Wert die Liste aus der Funktion getSet() bekommt
     lernset = getSet()
     # Erstellt eine Datei mit dem Namen der Variable setname und dem String ".txt" und fügt die Liste lernset in die Datei ein
