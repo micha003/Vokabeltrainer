@@ -31,36 +31,44 @@ def getQueriedSet(allSets):
         pass
 
     chosenSet = allSets[chosenSetName]
-    return chosenSet
+    # simple tests
+    print(chosenSet)
+    print(chosenSetName)
+    return chosenSet, chosenSetName
+
+def getQuerriedKK(Set: list, currentIndex: int):
+    kkV = Set[currentIndex].split(":")[0]
+    kkR = Set[currentIndex].split(":")[1]
+
+    print(Set)
+    print(currentIndex)
+    print(kkV)
+    print(kkR)
+    return kkV, kkR
 
 
 def Querry(allSets):
-    chosenSet = getQueriedSet(allSets)
-    if chosenSet == None:
-        return
-    else:
-        pass
+    value = getQueriedSet(allSets)[0]
+    chosenSet = value[0]
+    chosenSetName = value[1]
 
-    indezes = []
-    d = len(chosenSet)
-    # d steht für duration (Dauer) der for-Schleife nach diesem Comment
-    for i in range(d):
-        indezes.append(i)
+    indizes = [i for i in range(len(chosenSet))]
+    # Test
+    print(indizes)
+    r.shuffle(indizes)
+    print(indizes)
 
-    r.shuffle(indezes)
 
     rightAnswers = 0
     dkAnswers = 0  # Der abgefragte wusste die Antwort gar nicht
     totalAns = len(chosenSet)
     falseAnswers = 0
 
-    kkV: str()
-    kkR: str()
-    givenAnswer: str()
 
-    for a in indezes:
-        kkV = chosenSet[a].split(":")[0].strip()
-        kkR = chosenSet[a].split(":")[1].strip()
+    for a in indizes:
+        fullKK = getQuerriedKK(chosenSet, a)
+        kkV = fullKK[0]
+        kkR = fullKK[1]
 
         givenAnswer = input(f"{kkV}: ").strip()
 
@@ -82,9 +90,9 @@ def Querry(allSets):
                 - {falseAnswers} falsch
             """)
 
-    statsFile = open(f"{chosenSet}_stats.csv", "a")
+    statsFile = open(f"{chosenSetName}_stats.csv", "a")
     statsFile.write(
-        f"{str(t.strftime('%d.%m.%Y %H:%M'))}, {totalAns}, {rightAnswers}, {dkAnswers}, {falseAnswers}")
+        f"{str(t.strftime('%d.%m.%Y %H:%M'))}, {totalAns}, {rightAnswers}, {dkAnswers}, {falseAnswers}\n")
     statsFile.close()
     c.horizontalLine()
 
@@ -92,3 +100,5 @@ def Querry(allSets):
 if __name__ == "__main__":
     AIS = {"Test": ["Hallo:Hello", "Major:Haupt", "Remis:Unentschieden"]}
     Querry(AIS)
+    #getQueriedSet(AIS)
+    getQuerriedKK(AIS["Test"], 1)

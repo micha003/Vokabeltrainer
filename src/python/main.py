@@ -23,7 +23,6 @@ def printHelp():
     -help: zeigt alle Befehle an \n
     -create: erstellt ein neues Lernset \n
     -import: importiert ein Lernset \n
-    -edit: editiert ein Lernset \n
     -pra: Lernset üben \n
     -xxx: Beendet das Programm
     """)

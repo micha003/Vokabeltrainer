@@ -30,13 +30,13 @@ def getKK():
             else:
                 emptyValue = False
 
-    return f"{kk_v}:{kk_r} \n"
+    return f"{kk_v}:{kk_r}"
 
 
 def getSet():
     while True:
         KK = getKK()
-        temp.append(KK)
+        temp.append(KK + "\n")
         # reversed KK
         kk_v = KK.split(":")[1]
         kk_r = KK.split(":")[0]
