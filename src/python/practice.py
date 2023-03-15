@@ -3,60 +3,42 @@
 import core as c
 import importKK as iK
 import random as r
+import time as t
 
-# Definiert eine Funktion getQueriedSet(), die als Parameter ein Dictionary mit allen Sets bekommt
-def getQueriedSet(allSets: dict):
-    # Erstellt eine Variable chosenSetName, die als zugewiesenen Wert eine Benutzereingabe (String) bekommt
+
+def getQueriedSet(allSets: dict) -> tuple:
     chosenSetName = input("Bitte wählen Sie ein importiertes Set aus: ")
 
-    # Erstellt eine Liste mit allen Keys aus dem Dictionary allSets
-    allKeys = []
-    for key in allSets:
-        allKeys.append(key)
-
-    # Wenn der eingegebene Key nicht in der Liste allKeys ist, wird eine Fehlermeldung ausgegeben und eine Dauerschleife gestartet
-    if chosenSetName not in allKeys:
+    if chosenSetName in allSets.keys():
+        chosenSet = allSets[chosenSetName]
+        return chosenSet, chosenSetName
+    else:
         while True:
-            print("Dieses Set wurde nicht importiert. Wenn Sie dies nachträglich tun wollen, dann geben Sie 'import()' ein.")
-            # Erstellt eine Variable chosenSetName, die als zugewiesenen Wert eine Benutzereingabe (String) bekommt
-            chosenSetName = input("Bitte wählen Sie ein importiertes Set aus: ")
-            # Wenn der eingegebene Key in der Liste allKeys ist, wird die Schleife beendet
-            if chosenSetName in allKeys:
-                break
-            # wenn der eingegebene Key "import()" ist, wird man in die main.py weitergeleitet
-            elif chosenSetName == "import()":
-                return
+            chosenSetName = input(
+                "Bitte wählen Sie ein importiertes Set aus: ")
+            if chosenSetName in allSets.keys():
+                chosenSet = allSets[chosenSetName]
+                return chosenSet, chosenSetName
+
             else:
-                continue
-    else:
-        pass
+                print("Das Set existiert nicht!")
 
-    # Erstellt eine Variable chosenSet, die als zugewiesenen Wert den Wert des Keys chosenSetName aus dem Dictionary allSets bekommt
-    chosenSet = allSets[chosenSetName]
-    # Gibt die Variable chosenSet zurück
-    return chosenSet
 
-# Definiert eine Funktion Querry(), die als Parameter ein Dictionary mit allen Sets bekommt
+
+def getQuerriedKK(Set: list, currentIndex: int) -> tuple:
+    kkV = Set[currentIndex].split(":")[0]
+    kkR = Set[currentIndex].split(":")[1]
+    return kkV, kkR
+
+
 def Querry(allSets: dict):
-    # Erstellt eine Variable chosenSet, die als zugewiesenen Wert die Funktion getQueriedSet() bekommt
-    chosenSet = getQueriedSet(allSets)
-    
-    print("Hinweis: Wenn Sie die Antwort nicht wissen, geben Sie 'idk()' ein.")
-    # Wenn chosenSet den Wert None hat, wird die Funktion beendet
-    if chosenSet == None:
-        return
-    else:
-        pass
+    value = getQueriedSet(allSets)
+    chosenSet = value[0]
+    chosenSetName = value[1]
 
-    # Erstellt eine Liste mit allen Indezes des chosenSets
-    indexes = []
-    # Erstellt eine Schleife, die von 0 bis zur Länge des chosenSets geht
-    for i in range(len(chosenSet)):
-        # Fügt die Variable i in die Liste indexes ein
-        indexes.append(i)
+    indizes = [i for i in range(len(chosenSet))]
+    r.shuffle(indizes)
 
-    # Mischt die Liste indexes
-    r.shuffle(indexes)
 
     # Erstellt eine Variable rightAnswers, die als zugewiesenen Wert 0 bekommt
     rightAnswers = 0
@@ -67,12 +49,11 @@ def Querry(allSets: dict):
     # Erstellt eine Variable falseAnswers, die als zugewiesenen Wert 0 bekommt
     falseAnswers = 0
 
-    # Erstellt eine Schleife, die von 0 bis zur Länge des chosenSets geht
-    for a in indexes:
-        # Erstellt eine Variable kkV, die als zugewiesenen Wert den ersten Teil des Strings aus dem chosenSet an der Stelle a bekommt
-        kkV = chosenSet[a].split(":")[0].strip()
-        # Erstellt eine Variable kkR, die als zugewiesenen Wert den zweiten Teil des Strings aus dem chosenSet an der Stelle a bekommt
-        kkR = chosenSet[a].split(":")[1].strip()
+
+    for a in indizes:
+        kkV = getQuerriedKK(chosenSet, a)[0]
+        kkR = getQuerriedKK(chosenSet, a)[1]
+
 
         # Erstellt eine Variable givenAnswer, die als zugewiesenen Wert eine Benutzereingabe (String) bekommt
         givenAnswer = input(f"{kkV}: ").strip()
@@ -98,9 +79,16 @@ def Querry(allSets: dict):
                 - {dkAnswers} wussten Sie nicht \n
                 - {falseAnswers} falsch
             """)
-    c.horizontalLine()
+
+    with open(f"{chosenSetName}_stats.csv", "a") as statsFile:
+        statsFile.write(
+            f"{str(t.strftime('%d.%m.%Y %H:%M'))}, {totalAns}, {rightAnswers}, {dkAnswers}, {falseAnswers}\n")
+        c.horizontalLine()
 
 # Wenn das Skript direkt ausgeführt wird, wird die Funktion Querry() ausgeführt
 if __name__ == "__main__":
-    AIS = {"Test": ["Hallo:Hello", "Major:Haupt", "Remis:Unentschieden"]}
+    AIS = {"Test": ["1:2", "2:1", "3:4", "4:3",
+                    "5:6", "6:5", "7:8", "8:7", "9:10", "10:9"]}
     Querry(AIS)
+    # getQueriedSet(AIS)
+    # getQuerriedKK(AIS["Test"], 1)

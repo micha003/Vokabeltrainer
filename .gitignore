@@ -1,14 +1,16 @@
 drawio
 
 .prettierrc
-package.json
-package-lock.json
-
-node_modules
 
 __pycache__
 test.py
 .idea
-.vscode
 editKK.py
-output
+test.py
+
+testus.txt
+testus_stats.csv
+
+tests
+
+.vscode

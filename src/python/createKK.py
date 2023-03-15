@@ -32,9 +32,11 @@ def getKK() -> str:
             if kk_r.strip == "":
                 continue
             else:
-                break
-    # Gibt die beiden Variablen als String zurück
-    return f"{kk_v}:{kk_r} \n"
+
+                emptyValue = False
+
+    return f"{kk_v}:{kk_r}"
+
 
 # Definiert eine Funktion getSet(), die keine Parameter hat
 def getSet() -> list:
@@ -42,29 +44,35 @@ def getSet() -> list:
     while True:
         # Fügt der Liste temp einen neuen Eintrag hinzu, der aus der Funktion getKK() besteht
         KK = getKK()
-        temp.append(KK)
-        # Erstellt eine Variable kk_v, die als zugewiesenen Wert den ersten Teil der Variable KK (Vorderseite) bekommt
-        kk_v = KK.split(":")[1].split(" ")[0]
+
+        temp.append(KK + "\n")
+        # reversed KK
+        kk_v = KK.split(":")[1]
         kk_r = KK.split(":")[0]
-        # Fügt der Liste temp einen neuen Eintrag hinzu, der aus der Funktion getKK() besteht
         temp.append(f"{kk_v}:{kk_r} \n")
 
-        # startet eine Dauerschleife
-        while True:
-            # Erstellt eine Variable finishInput, die als zugewiesenen Wert eine Benutzereingabe (Integer) bekommt
-            try:
-                finishInput = int(
-                    input("1: weitere KKs | 2: weiter zu Export  \n"))
-                c.horizontalLine()
-                # Wenn die Eingabe 1 oder 2 ist, wird die Schleife beendet
-                if finishInput == 1 or finishInput == 2:
-                    break
-                else:
-                    # Wenn die Eingabe nicht 1 oder 2 ist, wird eine Fehlermeldung ausgegeben und die Schleife von vorne gestartet
-                    raise ValueError
-            # Wenn die Eingabe keine Zahl ist, wird eine Fehlermeldung ausgegeben und die Schleife von vorne gestartet
-            except ValueError:
-                    print("Bitte geben Sie 1 oder 2 ein!")
+        try:
+            finishInput = int(
+                input("1: weitere KKs | 2: weiter zu Export  \n"))
+            c.horizontalLine()
+
+            if finishInput == 1 or finishInput == 2:
+                pass
+            else:
+                raise ValueError
+        except ValueError:
+            falseValue = True
+            while falseValue:
+                print("Bitte geben Sie 1 oder 2 ein!")
+                try:
+                    finishInput = int(
+                        input("1: weitere KKs | 2: weiter zu Export \n"))
+                    if finishInput == 1 or finishInput == 2:
+                        pass
+                    else:
+                        raise ValueError
+                except ValueError:
+
                     continue
         # Wenn die Eingabe 1 ist, wird die Schleife von vorne gestartet
         if finishInput == 1:
@@ -76,17 +84,25 @@ def getSet() -> list:
 
 # Definiert eine Funktion export(), die keine Parameter hat
 def export():
-    # Erstellt eine Variable setname, die als zugewiesenen Wert eine Benutzereingabe (String) bekommt
-    while True:
-        c.horizontalLine()
-        setname = input("Name des Sets: ")
-        c.horizontalLine()
+    setname = input("Name des Sets: ")
+    print("Bitte beachten Sie, dass die dazugehörige .csv-Datei stets im gleichen Verzeichnis abgelegt ist!")
+    c.horizontalLine()
+    lernset = getSet()
 
-        if setname.strip() == "":
-            print("Leere Eingabe nicht zulässig!")
-            continue
-        else:
-            break
+    newset = open(f"{setname}.txt", "w")
+
+    for i in range(len(lernset)):
+        newset.write(str(lernset[i]))
+
+    newset.close()
+
+    # Erstellt eine Datei für die Statistiken
+    setStats = open(f"{setname}_stats.csv", "w")
+    setStats.write(
+        "Datum & Uhrzeit, Anzahl gesamt, Anzahl Richtig, Anzahl nicht gewusst, Anzahl Falsch \n")
+    setStats.close()
+
+
 
     # Erstellt eine Variable lernset, die als zugewiesenen Wert die Liste aus der Funktion getSet() bekommt
     lernset = getSet()

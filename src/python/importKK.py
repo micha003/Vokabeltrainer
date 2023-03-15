@@ -1,7 +1,9 @@
 # Importieren von Lernsets
 
-# Importieren der Module
-import core as c
+
+def importSet(importedSets):
+    os.chdir(os.getcwd())
+
 
 # Definiert eine Funktion importSet(importedSets), in den Klammern steht ein Parameter
 def importSet(importedSets: dict):
@@ -24,7 +26,10 @@ def importSet(importedSets: dict):
 
     # Erstellt eine Liste, die aus den Zeilen der Datei besteht
     importedKK = importedSet.read().split("\n")
-    # Löscht den letzten Eintrag der Liste, weil es immer eine leere Zeile am Ende gibt
+
+    importedSet.close()
+    # Löscht den letzten Eintrag der Liste
+
     del importedKK[-1]
 
     # fügt dem Dictionary importedSets ein neues Element hinzu, dessen Schlüssel der Dateiname ist und dessen Wert die Liste mit den Zeilen
