@@ -32,8 +32,7 @@ def getKK() -> str:
             if kk_r.strip == "":
                 continue
             else:
-
-                emptyValue = False
+                break
 
     return f"{kk_v}:{kk_r}"
 
@@ -61,18 +60,16 @@ def getSet() -> list:
             else:
                 raise ValueError
         except ValueError:
-            falseValue = True
-            while falseValue:
+            while True:
                 print("Bitte geben Sie 1 oder 2 ein!")
                 try:
                     finishInput = int(
                         input("1: weitere KKs | 2: weiter zu Export \n"))
                     if finishInput == 1 or finishInput == 2:
-                        pass
+                        break
                     else:
                         raise ValueError
                 except ValueError:
-
                     continue
         # Wenn die Eingabe 1 ist, wird die Schleife von vorne gestartet
         if finishInput == 1:
@@ -116,3 +113,5 @@ def export():
 # die Funktion wird nur ausgeführt, wenn das Programm direkt ausgeführt wird
 if __name__ == "__main__":
     export()
+
+# TODO: das ist irgendwo eine dauerschleife... dringend!!!
