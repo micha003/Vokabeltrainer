@@ -5,6 +5,8 @@ import core as c
 temp = []
 
 # Definiert eine Funktion getKK(), die keine Parameter hat
+
+
 def getKK() -> str:
     # Erstellt eine Variable kk_v, die als zugewiesenen Wert eine Benutzereingabe (String) bekommt
     kk_v = input("Vorderseite: ")
@@ -32,8 +34,7 @@ def getKK() -> str:
             if kk_r.strip == "":
                 continue
             else:
-
-                emptyValue = False
+                break
 
     return f"{kk_v}:{kk_r}"
 
@@ -61,48 +62,45 @@ def getSet() -> list:
             else:
                 raise ValueError
         except ValueError:
-            falseValue = True
-            while falseValue:
+            while True:
                 print("Bitte geben Sie 1 oder 2 ein!")
                 try:
                     finishInput = int(
                         input("1: weitere KKs | 2: weiter zu Export \n"))
                     if finishInput == 1 or finishInput == 2:
-                        pass
+                        break
                     else:
                         raise ValueError
                 except ValueError:
-
                     continue
+
         # Wenn die Eingabe 1 ist, wird die Schleife von vorne gestartet
         if finishInput == 1:
             continue
-        else:
+        elif finishInput == 2:
             # Wenn die Eingabe 2 ist, wird die Schleife beendet, die Liste temp zurückgegeben
             print(temp)
             return temp
+        else:
+            while True:
+                print("Bitte geben Sie 1 oder 2 ein!")
+                try:
+                    finishInput = int(
+                        input("1: weitere KKs | 2: weiter zu Export \n"))
+                    if finishInput == 1 or finishInput == 2:
+                        break
+                    else:
+                        raise ValueError
+                except ValueError:
+                    continue
 
 # Definiert eine Funktion export(), die keine Parameter hat
+
+
 def export():
     setname = input("Name des Sets: ")
     print("Bitte beachten Sie, dass die dazugehörige .csv-Datei stets im gleichen Verzeichnis abgelegt ist!")
     c.horizontalLine()
-    lernset = getSet()
-
-    newset = open(f"{setname}.txt", "w")
-
-    for i in range(len(lernset)):
-        newset.write(str(lernset[i]))
-
-    newset.close()
-
-    # Erstellt eine Datei für die Statistiken
-    setStats = open(f"{setname}_stats.csv", "w")
-    setStats.write(
-        "Datum & Uhrzeit, Anzahl gesamt, Anzahl Richtig, Anzahl nicht gewusst, Anzahl Falsch \n")
-    setStats.close()
-
-
 
     # Erstellt eine Variable lernset, die als zugewiesenen Wert die Liste aus der Funktion getSet() bekommt
     lernset = getSet()
@@ -113,6 +111,15 @@ def export():
             # Fügt der Datei newset den Eintrag der Liste lernset hinzu
             newset.write(lernset[i])
 
+    # Erstellt eine Datei für die Statistiken
+    setStats = open(f"{setname}_stats.csv", "w")
+    setStats.write(
+        "Datum & Uhrzeit, Anzahl gesamt, Anzahl Richtig, Anzahl nicht gewusst, Anzahl Falsch \n")
+    setStats.close()
+
+
 # die Funktion wird nur ausgeführt, wenn das Programm direkt ausgeführt wird
 if __name__ == "__main__":
     export()
+
+# TODO: das ist irgendwo eine dauerschleife... dringend!!!

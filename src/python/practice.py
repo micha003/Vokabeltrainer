@@ -24,7 +24,6 @@ def getQueriedSet(allSets: dict) -> tuple:
                 print("Das Set existiert nicht!")
 
 
-
 def getQuerriedKK(Set: list, currentIndex: int) -> tuple:
     kkV = Set[currentIndex].split(":")[0]
     kkR = Set[currentIndex].split(":")[1]
@@ -33,12 +32,12 @@ def getQuerriedKK(Set: list, currentIndex: int) -> tuple:
 
 def Querry(allSets: dict):
     value = getQueriedSet(allSets)
+    print("Wenn Sie die Lösung nicht wissen, geben Sie idk() ein.")
     chosenSet = value[0]
     chosenSetName = value[1]
 
     indizes = [i for i in range(len(chosenSet))]
     r.shuffle(indizes)
-
 
     # Erstellt eine Variable rightAnswers, die als zugewiesenen Wert 0 bekommt
     rightAnswers = 0
@@ -49,11 +48,9 @@ def Querry(allSets: dict):
     # Erstellt eine Variable falseAnswers, die als zugewiesenen Wert 0 bekommt
     falseAnswers = 0
 
-
     for a in indizes:
         kkV = getQuerriedKK(chosenSet, a)[0]
         kkR = getQuerriedKK(chosenSet, a)[1]
-
 
         # Erstellt eine Variable givenAnswer, die als zugewiesenen Wert eine Benutzereingabe (String) bekommt
         givenAnswer = input(f"{kkV}: ").strip()
@@ -65,8 +62,8 @@ def Querry(allSets: dict):
             rightAnswers += 1
         # Wenn der eingegebene Key "idk()" ist, wird die Variable dkAnswers um 1 erhöht
         elif givenAnswer == "idk()":
-            dkAnswers += 1
             c.horizontalLine()
+            dkAnswers += 1
         else:
             # Wenn die gegbenen Antwort nicht gleich der richtigen Antwort ist, wird die Variable falseAnswers um 1 erhöht
             print("Leider Falsch!")
@@ -84,6 +81,7 @@ def Querry(allSets: dict):
         statsFile.write(
             f"{str(t.strftime('%d.%m.%Y %H:%M'))}, {totalAns}, {rightAnswers}, {dkAnswers}, {falseAnswers}\n")
         c.horizontalLine()
+
 
 # Wenn das Skript direkt ausgeführt wird, wird die Funktion Querry() ausgeführt
 if __name__ == "__main__":

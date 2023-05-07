@@ -1,10 +1,4 @@
 # Importieren von Lernsets
-
-
-def importSet(importedSets):
-    os.chdir(os.getcwd())
-
-
 # Definiert eine Funktion importSet(importedSets), in den Klammern steht ein Parameter
 def importSet(importedSets: dict):
 # startet eine Dauerschleife

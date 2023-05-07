@@ -24,7 +24,7 @@ def printStartpage():
 def printHelp():
     # Übersicht über alle Befehle
     print("""
-    -help: zeigt alle Befehle an \n
+    -help: zeigt alle Befehle ean \n
     -create: erstellt ein neues Lernset \n
     -import: importiert ein Lernset \n
     -pra: Lernset üben \n
